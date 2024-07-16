@@ -1,0 +1,16 @@
+---
+name: "Ceph Build RPM"
+on:
+  pull_request:
+    branches:
+      - ces-test
+jobs:
+  build-rpm:
+    runs-on: mkck
+    if: github.ref == 'refs/heads/ces'
+    steps:
+      - cat /etc/os-release
+      - ls -la
+      - uses: actions/checkout@4
+      - ls -la
+
