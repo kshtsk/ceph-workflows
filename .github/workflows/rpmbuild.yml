@@ -7,10 +7,12 @@ on:
 jobs:
   build-rpm:
     runs-on: mkck
-    if: github.ref == 'refs/heads/ces'
+    if: github.ref == 'refs/heads/ces-test'
     steps:
-      - cat /etc/os-release
-      - ls -la
-      - uses: actions/checkout@4
-      - ls -la
+      - run: cat /etc/os-release
+      - pwd
+      - uses: actions/checkout@v4
+      - run: bash -x install-deps.sh
+      - run: bash -x do_cmake.sh
+      - run: bash -x make_srpms.sh
 
